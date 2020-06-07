@@ -9,8 +9,14 @@ class Client:
         self.last_message = splitted[4]
         self.socket = socket
 
+    def is_same_client(self, client):
+        if self.get_public_IP() == client.get_public_IP() and self.get_local_IP() == client.get_local_IP():
+            return True
+        else:
+            return False
+
     def set_last_message(self, message):
-        self.last_message = message
+        self.last_message = message.split(",")[4]
 
     def get_public_IP(self):
         return self.public_IP
